@@ -209,7 +209,9 @@ class NBA(callbacks.Plugin):
                          'period': g['period'],
                          'buzzer_beater': g['isBuzzerBeater'],
                          'ended': (g['statusNum'] == 3),
-                         'text_nugget': g['nugget']['text']
+                         'text_nugget': (g['nugget']['text']
+                                         if 'Watch live' not in g['nugget']['text']
+                                         and g['nugget']['text'] != ' ' else None)
                         }
 
             games.append(game_info)
